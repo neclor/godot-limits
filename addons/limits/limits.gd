@@ -54,34 +54,24 @@ const F64_N_MIN: float = -1.7976931348623157e+308
 ## [br]
 const F64_TRUE_MIN: float = 4.9406564584124654e-324
 
-
 # Godot types
 
-
-## -(1 << 63) = -9223372036854775808 [br]
-## Godot type. [br]
+## Minimum negative value of [int]. [br]
 const INT_MIN: int = I64_MIN
-## (1 << 63) - 1 = 9223372036854775807 [br]
-## Godot type. [br]
+## Maximum value of [int]. [br]
 const INT_MAX: int = I64_MAX
 
-## Minimum negative value of float. [br]
-## Godot type. [br]
+## Minimum negative value of [float]. [br]
 const FLOAT_MIN: float = F64_N_MIN
-## Maximum value of float. [br]
-## Godot type. [br]
+## Maximum value of [float]. [br]
 const FLOAT_MAX: float = F64_MAX
 
-## Minimum negative value of vector. [br]
-## Godot type. [br]
+## Minimum negative value of Vector. [br]
 const VECTOR_MIN: float = F32_N_MIN
-## Maximum value of vector. [br]
-## Godot type. [br]
+## Maximum value of Vector. [br]
 const VECTOR_MAX: float = F32_MAX
 
-## Minimum negative value of double precision vector. [br]
-## Godot type. [br]
+## Minimum negative value of double precision Vector. [br]
 const DOUBLE_VECTOR_MIN: float = F64_N_MIN
-## Maximum value of double precision vector. [br]
-## Godot type. [br]
+## Maximum value of double precision Vector. [br]
 const DOUBLE_VECTOR_MAX: float = F64_MAX
