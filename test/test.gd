@@ -6,11 +6,13 @@ func _run() -> void:
 	print("TEST")
 
 	print("int:")
+	print(Limits.INT_MAX)
 	print(Limits.max_value_of(typeof(1)))
 	print(Limits.min_value_of(typeof(1)))
 	print()
 
 	print("float:")
+	print(Limits.FLOAT_MAX)
 	print(Limits.max_value_of(typeof(1.0)))
 	print(Limits.min_value_of(typeof(1.0)))
 	print()

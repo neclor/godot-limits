@@ -1,12 +1,23 @@
-# Godot specific ignores
+# My android ignores
+keystore/
+android/
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+*.backup
+
+# Godot 4+ specific ignores
 .godot/
 /android/
-*.tmp
-*.import
+.nomedia
+
+# Godot-specific ignores
 .import/
 export.cfg
 export_presets.cfg
-*.uid
+export_credentials.cfg
 
 # Dummy HTML5 export presets file for continuous integration
 !.github/dist/export_presets.cfg
@@ -23,10 +34,7 @@ mono_crash.*.json
 .directory
 .DS_Store
 *~
-
-# My android ignores
-keystore/
-android/
+*.blend1
 
 # DLL
 *.dll

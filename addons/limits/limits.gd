@@ -1,7 +1,7 @@
 class_name Limits extends Object
 
 
-## Provides numerical constants for integer and floating-point limits.
+## Adds constants and utility functions for numeric limits.
 ##
 ## @tutorial(Wikipedia: Binary number): https://simple.wikipedia.org/wiki/Binary_number
 ## @tutorial(Wikipedia: Floating point): https://simple.wikipedia.org/wiki/Floating_point
@@ -9,6 +9,8 @@ class_name Limits extends Object
 ## @tutorial(Wikipedia: Double-precision floating-point format): https://en.wikipedia.org/wiki/Double-precision_floating-point_format
 ## @tutorial(Wikipedia: Floating-point arithmetic): https://en.wikipedia.org/wiki/Floating-point_arithmetic
 
+
+#region Constants
 
 ## (1 << 8) - 1 = 255
 const UI8_MAX: int = (1 << 8) - 1
@@ -55,11 +57,23 @@ const F64_MAX: float = 1.7976931348623157e+308
 ## Minimum negative value of 64-bit float.
 const F64_N_MIN: float = -1.7976931348623157e+308
 ## Smallest positive denormalized number of 64-bit float.
-## [br] [br] [br]
-## [@GDScript] types: 
+##
 ## [br] [br]
+## [color=LIGHT_STEEL_BLUE] [@GDScript] types [/color]
+## [br]
+##
 const F64_TRUE_MIN: float = 4.9406564584124654e-324
 
+#endregion
+
+
+#region Godot types
+
+## True only if compiled with [code]precision=double[/code].
+##
+## [br]
+##
+const IS_DOUBLE_PRECISION: bool = Vector2(1e39, 0).x != INF
 
 ## Minimum negative value of [int].
 const INT_MIN: int = I64_MIN
@@ -71,31 +85,27 @@ const FLOAT_MIN: float = F64_N_MIN
 ## Maximum value of [float].
 const FLOAT_MAX: float = F64_MAX
 
-## Minimum negative value of Vector.
-const VECTOR_MIN: float = F32_N_MIN
-## Maximum value of Vector.
-const VECTOR_MAX: float = F32_MAX
+## Minimum negative value of single-precision Vector component.
+const VECTOR_MIN_S: float = F32_N_MIN
+## Maximum value of single-precision Vector component.
+const VECTOR_MAX_S: float = F32_MAX
 
-## Minimum negative value of double precision Vector.
-const DOUBLE_VECTOR_MIN: float = F64_N_MIN
-## Maximum value of double precision Vector.
-## [br]
-const DOUBLE_VECTOR_MAX: float = F64_MAX
+## Minimum negative value of double-precision Vector component.
+const VECTOR_MIN_D: float = F64_N_MIN
+## Maximum value of double-precision Vector component.
+const VECTOR_MAX_D: float = F64_MAX
 
-## True only if compiled with [code]precision=double[/code].
-## [br]
-const IS_DOUBLE_PRECISION: bool = Vector2(1e39, 0).x != INF
+## Minimum negative value of actual Vector component.
+const VECTOR_MIN: float = VECTOR_MIN_D if IS_DOUBLE_PRECISION else VECTOR_MIN_S
+## Maximum value of actual Vector component.
+const VECTOR_MAX: float = VECTOR_MAX_D if IS_DOUBLE_PRECISION else VECTOR_MAX_S
 
-## Minimum negative vector value depending on precision mode.
-const ACTUAL_VECTOR_MIN: float = DOUBLE_VECTOR_MIN if IS_DOUBLE_PRECISION else VECTOR_MIN
-## Maximum vector value depending on precision mode.
-## [br]
-const ACTUAL_VECTOR_MAX: float = DOUBLE_VECTOR_MAX if IS_DOUBLE_PRECISION else VECTOR_MAX
-
-## Minimum negative value of integer Vector.
+## Minimum negative value of Vectori component.
 const VECTORI_MIN: int = Vector2i.MIN.x
-## Maximum value of integer Vector.
+## Maximum value of Vectori component.
 const VECTORI_MAX: int = Vector2i.MAX.x
+
+#endregion
 
 
 ## Returns the maximum possible value for the given [enum Variant.Type]. [br]
@@ -106,11 +116,11 @@ static func max_value_of(type: Variant.Type) -> Variant:
 		TYPE_BOOL: return true
 		TYPE_INT: return INT_MAX
 		TYPE_FLOAT: return FLOAT_MAX
-		TYPE_VECTOR2: return ACTUAL_VECTOR_MAX
+		TYPE_VECTOR2: return VECTOR_MAX
 		TYPE_VECTOR2I: return VECTORI_MAX
-		TYPE_VECTOR3: return ACTUAL_VECTOR_MAX
+		TYPE_VECTOR3: return VECTOR_MAX
 		TYPE_VECTOR3I: return VECTORI_MAX
-		TYPE_VECTOR4: return ACTUAL_VECTOR_MAX
+		TYPE_VECTOR4: return VECTOR_MAX
 		TYPE_VECTOR4I: return VECTORI_MAX
 		_: 
 			assert(false, "Unsupported type: " + str(type))
@@ -125,11 +135,11 @@ static func min_value_of(type: Variant.Type) -> Variant:
 		TYPE_BOOL: return false
 		TYPE_INT: return INT_MIN
 		TYPE_FLOAT: return FLOAT_MIN
-		TYPE_VECTOR2: return ACTUAL_VECTOR_MIN
+		TYPE_VECTOR2: return VECTOR_MIN
 		TYPE_VECTOR2I: return VECTORI_MIN
-		TYPE_VECTOR3: return ACTUAL_VECTOR_MIN
+		TYPE_VECTOR3: return VECTOR_MIN
 		TYPE_VECTOR3I: return VECTORI_MIN
-		TYPE_VECTOR4: return ACTUAL_VECTOR_MIN
+		TYPE_VECTOR4: return VECTOR_MIN
 		TYPE_VECTOR4I: return VECTORI_MIN
 		_: 
 			assert(false, "Unsupported type: " + str(type))
