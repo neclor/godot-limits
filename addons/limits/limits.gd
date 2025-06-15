@@ -59,7 +59,7 @@ const F64_N_MIN: float = -1.7976931348623157e+308
 ## Smallest positive denormalized number of 64-bit float.
 ##
 ## [br] [br]
-## [color=LIGHT_STEEL_BLUE] [@GDScript] types [/color]
+## [@GDScript] [color=LIGHT_STEEL_BLUE]types[/color]
 ## [br]
 ##
 const F64_TRUE_MIN: float = 4.9406564584124654e-324
