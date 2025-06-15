@@ -11,7 +11,6 @@ class_name Limits extends Object
 
 
 #region Constants
-
 ## (1 << 8) - 1 = 255
 const UI8_MAX: int = (1 << 8) - 1
 ## (1 << 16) - 1 = 65535
@@ -63,12 +62,10 @@ const F64_N_MIN: float = -1.7976931348623157e+308
 ## [br]
 ##
 const F64_TRUE_MIN: float = 4.9406564584124654e-324
-
 #endregion
 
 
 #region Godot types
-
 ## True only if compiled with [code]precision=double[/code].
 ##
 ## [br]
@@ -104,10 +101,10 @@ const VECTOR_MAX: float = VECTOR_MAX_D if IS_DOUBLE_PRECISION else VECTOR_MAX_S
 const VECTORI_MIN: int = Vector2i.MIN.x
 ## Maximum value of Vectori component.
 const VECTORI_MAX: int = Vector2i.MAX.x
-
 #endregion
 
 
+#region Public
 ## Returns the maximum possible value for the given [enum Variant.Type]. [br]
 ## Supports: [code]null[/code], [bool], [int], [float], [Vector2], [Vector2i], [Vector3], [Vector3i], [Vector4], [Vector4i].
 static func max_value_of(type: Variant.Type) -> Variant:
@@ -144,3 +141,4 @@ static func min_value_of(type: Variant.Type) -> Variant:
 		_: 
 			assert(false, "Unsupported type: " + str(type))
 			return null
+#endregion
