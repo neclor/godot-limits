@@ -119,8 +119,8 @@ static func max_value_of(type: Variant.Type) -> Variant:
 		TYPE_VECTOR3I: return VECTORI_MAX
 		TYPE_VECTOR4: return VECTOR_MAX
 		TYPE_VECTOR4I: return VECTORI_MAX
-		_: 
-			assert(false, "Unsupported type: " + str(type))
+		_:
+			assert(false, "Unsupported type: " + type_string(type))
 			return null
 
 
@@ -138,7 +138,7 @@ static func min_value_of(type: Variant.Type) -> Variant:
 		TYPE_VECTOR3I: return VECTORI_MIN
 		TYPE_VECTOR4: return VECTOR_MIN
 		TYPE_VECTOR4I: return VECTORI_MIN
-		_: 
-			assert(false, "Unsupported type: " + str(type))
+		_:
+			assert(false, "Unsupported type: " + type_string(type))
 			return null
 #endregion
