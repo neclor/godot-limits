@@ -17,6 +17,10 @@ config/tags=PackedStringArray("addon")
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://c213mnjr2v0ru"
 
+[dotnet]
+
+project/assembly_name="Limits"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/limits/plugin.cfg")

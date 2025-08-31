@@ -120,7 +120,7 @@ static func max_value_of(type: Variant.Type) -> Variant:
 		TYPE_VECTOR4: return VECTOR_MAX
 		TYPE_VECTOR4I: return VECTORI_MAX
 		_:
-			assert(false, "Unsupported type: " + type_string(type))
+			_error("`max_value_of`: Unsupported type: " + type_string(type))
 			return null
 
 
@@ -139,6 +139,20 @@ static func min_value_of(type: Variant.Type) -> Variant:
 		TYPE_VECTOR4: return VECTOR_MIN
 		TYPE_VECTOR4I: return VECTORI_MIN
 		_:
-			assert(false, "Unsupported type: " + type_string(type))
+			_error("`min_value_of`: Unsupported type: " + type_string(type))
 			return null
+#endregion
+
+
+#region Private
+static var _message_prefix: String = "[Limits] - "
+
+
+static func _error(message: String = "") -> void:
+	assert(false, _message_prefix + message)
+	push_error(_message_prefix + message)
+
+
+func _init() -> void:
+	_error("Class is static and should not be instantiated.")
 #endregion
